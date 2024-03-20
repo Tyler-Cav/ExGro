@@ -1,8 +1,8 @@
-import './Header.css'
+import "./Header.css";
 export default function Header() {
-    return (
-        <header>
-            <div>test</div>
-        </header>
-    )
+  return (
+    <header>
+      <div className="text-3xl font-bold underline">test</div>
+    </header>
+  );
 }
