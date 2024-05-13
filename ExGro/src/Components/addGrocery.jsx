@@ -2,15 +2,17 @@ import { useState } from "react";
 
 export default function AddGroceryItem() {
   const [groceryItem, setGroceryItem] = useState("");
+  const [updateList, setList] = useState([]);
 
   const groceryInput = (event) => {
     setGroceryItem(event.target.value);
-    console.log(groceryItem);
   };
 
-
   const checkItem = () => {
-    console.log(groceryItem);
+    if (groceryItem.length > 0) {
+      setList([...updateList, groceryItem]);
+      setGroceryItem("");
+    }
   };
 
   return (
@@ -25,6 +27,16 @@ export default function AddGroceryItem() {
             onChange={groceryInput}
             className="outline-none border-2 rounded border-black"
           ></input>
+          <ul>
+            {updateList.map((item, index) => (
+              <li
+                key={index}
+                className="outline-none border-2 border-black mt-1"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
         <button type="button" onClick={checkItem}>
           Add
