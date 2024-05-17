@@ -16,7 +16,6 @@ export default function AddGroceryItem() {
   const [groceryItem, setGroceryItem] = useState("");
   const [updateList, setList] = useState([]);
   const [selectDate, updateSelectedDate] = useState("");
-  const [expDate, setExpDate] = useState([]);
 
   const expDateOutput = (event) => {
     updateSelectedDate(event.target.value);
@@ -81,8 +80,7 @@ export default function AddGroceryItem() {
           />
           {/* mapping over each grocery item objects expiration date */}
           <>
-            <ul
-              className="grid grid-cols-2">
+            <ul>
 
               {updateList.map((item, index) => (
                 <li
@@ -93,20 +91,11 @@ export default function AddGroceryItem() {
 
                 </li>
               ))}
-              {updateList.map((item, index) => (
-                <li
-                  key={index}
-                  className="grid-cols-1 outline-none border-2 border-black mt-1"
-                >
-                  {<item.delete />}
-
-                </li>
-              ))}
             </ul>
           </>
         </div>
         {/* Add to list button that's calling on the checkItem function when clicked to add a new grocery item */}
-        <div className="flex-start">
+        <div className="flex-start ml-2">
           <button
             className="outline-none border-2 border-black rounded p-2"
             type="button"
@@ -114,6 +103,20 @@ export default function AddGroceryItem() {
           >
             Add to list
           </button>
+          <div
+            className="mt-4">
+          </div>
+          <ul>
+            {updateList.map((item, index) => (
+              <li
+                key={index}
+                className="outline-none border-2 rounded border-black mt-1 p-1 bg-red-600 w-fit"
+              >
+                {<item.delete />}
+
+              </li>
+            ))}
+          </ul>
         </div>
       </form>
     </section>
